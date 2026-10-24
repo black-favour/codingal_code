@@ -1,0 +1,154 @@
+<!--
+1) Start the HTML document.
+   a) Use `<!DOCTYPE html>` to define the page as an HTML5 document.
+   b) Open the `<html>` tag.
+
+2) Create the head section.
+   a) Set the page title as "My Game Profile".
+   b) Add internal CSS using the `<style>` tag.
+
+3) Style the webpage.
+   a) Style the `body` with font, background, text alignment, and padding.
+   b) Style the heading using `h1`.
+   c) Style the button with colour, padding, border radius, and cursor.
+   d) Style each `div` as a profile detail box.
+
+4) Create the page content.
+   a) Add the main heading.
+   b) Add a button that calls `showProfile()` when clicked.
+   c) Add profile rows for name, score, top score, rank, greeting, stars, bonus level, and team name.
+
+5) Add JavaScript using the `<script>` tag.
+   a) Create the `showProfile()` function.
+   b) Store player details using variables.
+   c) Use `null` and `undefined` for missing values.
+   d) Compare the score with the high score.
+
+6) Create the player rank.
+   a) Use `if`, `else if`, and `else`.
+   b) Assign Gold, Silver, or Bronze based on the score.
+
+7) Create a time-based greeting.
+   a) Use the Date object to get the current hour.
+   b) Show morning, afternoon, or evening greeting.
+
+8) Create stars using a while loop.
+   a) Start with an empty stars variable.
+   b) Keep adding stars until the count reaches 5.
+
+9) Display the profile on the webpage.
+   a) Use `document.getElementById()` to find each span.
+   b) Use `innerHTML` to show the final values.
+
+10) Close the `<script>`, `<body>`, and `<html>` tags to complete the webpage.
+-->
+
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>My Game Profile</title>
+      <style>
+         body {
+            font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            background-color: black;
+            color: white;
+            text-align: center;
+            padding: 30px;
+         }
+         h1 {
+            color: white;
+            background-color: black;
+            padding: 20px;
+            margin: 10px;
+            text-align: center;
+         }
+         button {
+            background-color: Blue;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: hand;
+         }
+
+            div {
+
+            border: 1px solid navy;
+
+            width: 280px;
+
+            margin: 6px auto;
+
+            padding: 8px 12px;
+
+            text-align: left;
+
+            border-radius: 6px;
+            
+            
+
+            }
+      </style>
+   </head>
+   <body>
+      <h1>My Game Profile</h1>
+      <button onclick="showProfile()">Show Profile</button>
+      <div>Name: <span id="name"></span></div>
+      <div>Score: <span id="score"></span></div>
+      <div>Top Score: <span id="topScore"></span></div>
+      <div>Rank: <span id="rank"></span></div>
+      <div>Greeting: <span id="greeting"></span></div>
+      <div>Stars: <span id="stars"></span></div>
+      <div>Bonus Level: <span id="bonusLevel"></span></div>
+      <div>Team Name: <span id="teamName"></span></div>
+
+      <script>
+         function showProfile() {
+            var playerName = "Black_Favour";
+            var playerScore = 30000000; // Player's score
+            var playerTopScore = 30000000; // Player's top score
+            var playerRank;
+            var playerGreeting;
+            var playerStars = "";
+            var playerBonusLevel = null; // No bonus level
+            var playerTeamName = undefined; // Team name not set
+
+            // Determine rank based on score
+            if (playerScore >= 1800) {
+               playerRank = "Gold";
+            } else if (playerScore >= 1200) {
+               playerRank = "Silver";
+            } else {
+               playerRank = "Bronze";
+            }
+
+            // Determine greeting based on time of day
+            var currentHour = new Date().getHours();
+            if (currentHour < 12) {
+               playerGreeting = "Good Morning!";
+            } else if (currentHour < 18) {
+               playerGreeting = "Good Afternoon!";
+            } else {
+               playerGreeting = "Good Evening!";
+            }
+
+            // Create stars using a while loop
+            var starCount = 0;
+            while (starCount < 5) {
+               playerStars += "★";
+               starCount++;
+            }
+
+            // Display the profile on the webpage
+            document.getElementById("name").innerHTML = playerName;
+            document.getElementById("score").innerHTML = playerScore;
+            document.getElementById("topScore").innerHTML = playerTopScore;
+            document.getElementById("rank").innerHTML = playerRank;
+            document.getElementById("greeting").innerHTML = playerGreeting;
+            document.getElementById("stars").innerHTML = playerStars;
+            document.getElementById("bonusLevel").innerHTML = playerBonusLevel;
+            document.getElementById("teamName").innerHTML = playerTeamName;
+         }
+      </script>
+   </body>
+</html>
