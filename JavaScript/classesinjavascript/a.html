@@ -1,0 +1,111 @@
+<!--
+1) Start the HTML document.
+   a) Use `<!DOCTYPE html>` to define the page as an HTML5 document.
+   b) Open the `<html>` tag.
+
+2) Create the head section.
+   a) Set the page title as "My Planet Cards".
+   b) Add internal CSS using the `<style>` tag.
+
+3) Style the webpage.
+   a) Style the `body` with font, background, padding, and text alignment.
+   b) Style the main heading and paragraph.
+   c) Use `.cards` to arrange the cards in a row using Flexbox.
+   d) Use `.card` to style each planet card.
+   e) Style the planet name and planet fact.
+   f) Style the button.
+
+4) Create the page content.
+   a) Add the main heading "My Planet Cards".
+   b) Add a short instruction paragraph.
+   c) Add a button that calls `showPlanets()` when clicked.
+   d) Add three empty card containers using unique IDs.
+
+5) Add JavaScript using the `<script>` tag.
+   a) Create a class named `Planet`.
+   b) Use a `constructor()` to store the planet name and fact.
+   c) Create a `describe()` method to return the planet description.
+
+6) Create the `showPlanets()` function.
+   a) Create three planet objects using the `Planet` class.
+   b) Store details for Earth, Mars, and Saturn.
+
+7) Display the planet cards on the webpage.
+   a) Use `document.getElementById()` to select each card container.
+   b) Use `innerHTML` to add the planet name and description.
+   c) Use string concatenation to build each card.
+
+8) Close the `<script>`, `<body>`, and `<html>` tags to complete the webpage.
+-->
+
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>My Planet Cards</title>
+      <style>
+         body {
+            font-family: Arial, sans-serif;
+            background-color: red;
+            padding: 20px;
+            text-align: center;
+         }
+         h1 {
+            color: #333;
+         }
+         p {
+            color: #666;
+         }
+         .cards {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+         }
+         .card {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            margin: 10px;
+            padding: 20px;
+            width: 200px;
+         }
+         .card h2 {
+            margin-top: 0;
+         }
+      </style>
+   </head>
+   <body>
+      <h1>My Planet Cards</h1>
+      <p>Click the button to see information about each planet!</p>
+      <button onclick="showPlanets()">Show Planets</button>
+      <div class="cards">
+         <div id="earth-card" class="card"></div>
+         <div id="mars-card" class="card"></div>
+         <div id="saturn-card" class="card"></div>
+         <div id="pluto-card" class="card"></div>
+      </div>
+
+      <script>
+         class Planet {
+            constructor(name, fact) {
+               this.name = name;
+               this.fact = fact;
+            }
+
+            describe() {
+               return this.name + ": " + this.fact; 
+            }
+         }
+
+         function showPlanets() {
+            const earth = new Planet("Earth", "The only planet known to support life.");
+            const mars = new Planet("Mars", "Known as the Red Planet.");
+            const saturn = new Planet("Saturn", "Famous for its prominent ring system.");
+            const pluto = new Planet("Pluto", "Once considered the ninth planet, now classified as a dwarf planet.");
+
+            document.getElementById("earth-card").innerHTML = earth.describe();
+            document.getElementById("mars-card").innerHTML = mars.describe();
+            document.getElementById("saturn-card").innerHTML = saturn.describe();
+            document.getElementById("pluto-card").innerHTML = pluto.describe();
+         }
+      </script>
+   </body>
+</html>
